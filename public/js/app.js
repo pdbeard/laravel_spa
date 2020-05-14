@@ -1956,6 +1956,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1977,6 +1983,9 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/users').then(function (response) {
         _this.loading = false;
         _this.users = response.data;
+      })["catch"](function (error) {
+        _this.loading = false;
+        _this.error = error.response.data.message || error.message;
       });
     }
   }
@@ -37630,7 +37639,21 @@ var render = function() {
     _vm._v(" "),
     _vm.error
       ? _c("div", { staticClass: "error" }, [
-          _vm._v("\n        " + _vm._s(_vm.error) + "\n    ")
+          _vm._v("\n        " + _vm._s(_vm.error) + "\n        "),
+          _c("p", [
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.fetchData($event)
+                  }
+                }
+              },
+              [_vm._v("\n                Try Again\n            ")]
+            )
+          ])
         ])
       : _vm._e(),
     _vm._v(" "),
@@ -52764,7 +52787,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _views_UsersIndex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/UsersIndex */ "./resources/js/views/UsersIndex.vue");
+/* harmony import */ var _views_UsersIndex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/UsersIndex */ "./resources/js/views/UsersIndex.vue");
 /* harmony import */ var _views_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/App */ "./resources/js/views/App.vue");
 /* harmony import */ var _views_Hello__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/Hello */ "./resources/js/views/Hello.vue");
 /* harmony import */ var _views_Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/Home */ "./resources/js/views/Home.vue");
@@ -52791,7 +52814,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/users',
     name: 'users.index',
-    component: _views_UsersIndex__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _views_UsersIndex__WEBPACK_IMPORTED_MODULE_2__["default"]
   }]
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
