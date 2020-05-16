@@ -43,7 +43,8 @@ export default {
                 .get('/api/users')
                 .then(response => {
                     this.loading = false;
-                    this.users = response.data;
+                    this.users = response.data.data;
+                    // console.log(this.users)
                 }).catch(error => {
                     this.loading = false;
                     this.error = error.response.data.message || error.message;
